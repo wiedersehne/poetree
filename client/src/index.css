@@ -1,0 +1,38 @@
+:root {
+  --ink: #1a1614;
+  --parchment: #f5f0e8;
+  --cream: #faf7f2;
+  --accent: #8b6914;
+  --accent-soft: #c4a84a;
+  --shadow: rgba(26, 22, 20, 0.08);
+  --shadow-strong: rgba(26, 22, 20, 0.15);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+button {
+  font-family: var(--sans);
+  cursor: pointer;
+}

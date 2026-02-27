@@ -1,0 +1,9 @@
+node_modules/
+.history/
+.env
+*.log
+.DS_Store
+server/uploads/*
+server/generated/*
+server/data/poems.json
+client/dist/

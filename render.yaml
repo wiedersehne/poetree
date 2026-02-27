@@ -1,0 +1,29 @@
+# Poetree - Render deployment
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: poetree
+    runtime: node
+    region: oregon
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        sync: false
+    # Optional: for Gmail SMTP instead of Resend
+    # - key: SMTP_HOST
+    #   sync: false
+    # - key: SMTP_PORT
+    #   sync: false
+    # - key: SMTP_USER
+    #   sync: false
+    # - key: SMTP_PASS
+    #   sync: false
+    # - key: SMTP_FROM
+    #   sync: false

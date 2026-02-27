@@ -1,0 +1,398 @@
+.upload-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upload-header h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 0.25rem;
+}
+
+.upload-header .subtitle {
+  opacity: 0.6;
+  margin: 0;
+}
+
+.error-banner {
+  background: #f8e8e8;
+  color: #8b3a3a;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.upload-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.poem-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--serif);
+  line-height: 1.7;
+  resize: vertical;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.form-group input[type="file"] {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.file-name {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: var(--cream);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background: #756010;
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--shadow-strong);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.secondary-btn:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Transform panel */
+.transform-panel {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.transform-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--shadow);
+}
+
+.transform-header h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.category-badge {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.transform-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.transform-section h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.transform-section .hint {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 0 0 1rem;
+}
+
+.done {
+  color: #2d6a2d;
+  font-weight: 500;
+  margin: 0.5rem 0 0 !important;
+}
+
+.generated-preview {
+  margin-top: 0.5rem;
+}
+
+.preview-translation {
+  background: var(--cream);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.preview-translation pre,
+.preview-translation textarea {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.preview-translation textarea.editable-translation {
+  width: 100%;
+  min-height: 120px;
+  max-height: 320px;
+  resize: vertical;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.preview-translation textarea.editable-translation:focus {
+  outline: none;
+  border-color: var(--ink, #1a1a1a);
+  box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.08);
+}
+
+.preview-audio {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  max-height: 48px;
+}
+
+.preview-cover {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.regenerate-btn {
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent-soft);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.regenerate-btn:hover:not(:disabled) {
+  background: rgba(139, 105, 20, 0.1);
+}
+
+.regenerate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.action-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.action-btn:hover:not(:disabled) {
+  background: #756010;
+}
+
+.action-btn:disabled {
+  opacity: 0.7;
+}
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.voice-option, .style-option {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voice-option:has(input:checked),
+.style-option:has(input:checked) {
+  border-color: var(--accent);
+  background: rgba(139, 105, 20, 0.08);
+}
+
+.voice-option input, .style-option input {
+  display: none;
+}
+
+.voice-name, .style-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.voice-gender {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.voice-option.voice-male .voice-gender { color: #1a5fb4; }
+.voice-option.voice-female .voice-gender { color: #c01c28; }
+
+.voice-desc, .style-desc {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.music-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.select-existing-music {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.select-existing-music label {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.select-existing-music select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 180px;
+  background: #fff;
+}
+
+.audio-options-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.option-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.option-group select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 140px;
+}
+
+.checkbox-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.transform-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--shadow);
+}
