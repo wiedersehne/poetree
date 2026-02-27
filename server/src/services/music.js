@@ -5,8 +5,8 @@ import ffmpegStatic from 'ffmpeg-static';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ffmpeg = ffmpegStatic || 'ffmpeg';
-
 const SUNO_API = 'https://api.sunoapi.org/api/v1';
+const ambientFallback = path.join(__dirname, '../../assets/music/generated-ambient.mp3');
 
 async function runFfmpeg(args) {
   const { execFile } = await import('child_process');
@@ -75,7 +75,7 @@ async function generateWithSuno(token, text, style) {
   }
 
   const taskId = data.data.taskId;
-  const maxAttempts = 60;
+  const maxAttempts = 72; // ~6 min (Suno can take a while)
   for (let i = 0; i < maxAttempts; i++) {
     await new Promise((r) => setTimeout(r, 5000));
     const statusRes = await fetch(`${SUNO_API}/generate/record-info?taskId=${taskId}`, {

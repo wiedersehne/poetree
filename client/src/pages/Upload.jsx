@@ -7,6 +7,7 @@ import {
   updatePoem,
   generateAudio,
   generateMusic,
+  getPoem,
   getAvailableMusic,
   generateCover,
 } from '../api';
@@ -145,9 +146,28 @@ export default function Upload() {
     setError('');
     setLoadingAction('music');
     try {
-      const p = await generateMusic(poem.id, musicStyle);
-      setPoem(p);
-      setAvailableMusic(await getAvailableMusic(poem.id));
+      const res = await generateMusic(poem.id, musicStyle);
+      if (res.status === 'generating') {
+        const pollMs = 3000;
+        const maxAttempts = 100; // ~5 min
+        let done = false;
+        for (let i = 0; i < maxAttempts && !done; i++) {
+          await new Promise((r) => setTimeout(r, pollMs));
+          const updated = await getPoem(poem.id);
+          if (updated.musicGenerationError) {
+            setError(updated.musicGenerationError);
+            done = true;
+          } else if (updated.musicPath) {
+            setPoem(updated);
+            setAvailableMusic(await getAvailableMusic(poem.id));
+            done = true;
+          }
+        }
+        if (!done) setError('Music generation timed out');
+      } else {
+        setPoem(res);
+        setAvailableMusic(await getAvailableMusic(poem.id));
+      }
     } catch (err) {
       setError(err.message || 'Music generation failed');
     } finally {

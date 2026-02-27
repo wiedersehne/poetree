@@ -79,7 +79,9 @@ export async function generateMusic(id, style = 'ambient') {
     body: JSON.stringify({ style }),
   });
   if (!res.ok) throw new Error(await res.text());
-  return res.json();
+  const data = await res.json();
+  if (data.status === 'generating') return { status: 'generating', poem: data };
+  return data;
 }
 
 export async function generateCover(id, style) {

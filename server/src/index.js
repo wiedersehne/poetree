@@ -195,7 +195,7 @@ app.post('/api/poems/:id/audio', async (req, res) => {
   }
 });
 
-// Generate background music
+// Generate background music (async to avoid request timeouts; Suno/ffmpeg can take minutes)
 app.post('/api/poems/:id/music', async (req, res) => {
   try {
     const { style } = req.body;
@@ -203,11 +203,28 @@ app.post('/api/poems/:id/music', async (req, res) => {
     const poem = poems.find((p) => p.id === req.params.id);
     if (!poem) return res.status(404).json({ error: 'Poem not found' });
 
+    delete poem.musicGenerationError; // clear any prior error
     const text = poem.translatedText || poem.originalText;
-    const musicPath = await generateMusic(poem.id, text, style || 'ambient');
-    poem.musicPath = musicPath;
-    await savePoems(poems);
-    res.json({ ...poem, musicPath });
+    const s = style || 'ambient';
+
+    res.status(202).json({ status: 'generating', ...poem });
+
+    (async () => {
+      try {
+        const musicPath = await generateMusic(poem.id, text, s);
+        poem.musicPath = musicPath;
+        delete poem.musicGenerationError;
+      } catch (err) {
+        console.error('[music]', err);
+        poem.musicGenerationError = err.message;
+      }
+      const updated = await getPoems();
+      const idx = updated.findIndex((p) => p.id === poem.id);
+      if (idx >= 0) {
+        updated[idx] = { ...updated[idx], ...poem };
+        await savePoems(updated);
+      }
+    })();
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });
@@ -382,7 +399,7 @@ if (isProduction) {
   });
 }
 
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   await ensureDataDir();
-  console.log(`Poetree server running at http://localhost:${PORT}`);
+  console.log(`Poetree server running on port ${PORT}`);
 });
