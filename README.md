@@ -1,6 +1,17 @@
 # Poetree
 
-A website to upload your poems, translate them to English, generate beautiful audio with natural voices and background music, and create AI cover art. Browse your collection in an art exhibition–style gallery.
+A website to upload your poems, translate them, generate audio and cover art, and browse your collection in an exhibition-style gallery.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/wiedersehne/poetree)
+
+## Quick deploy (one click)
+
+1. Click **[Deploy to Render](https://render.com/deploy?repo=https://github.com/wiedersehne/poetree)** above
+2. Sign in with GitHub (connect your [wiedersehne](https://github.com/wiedersehne) account)
+3. In **Environment**, add `OPENAI_API_KEY` with your [OpenAI API key](https://platform.openai.com/api-keys)
+4. Click **Deploy** — your site will be live at `https://poetree.onrender.com` (or similar)
+
+---
 
 ## Features
 
